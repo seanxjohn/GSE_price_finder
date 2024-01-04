@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSE Stock Companies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #1b365f;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #bd8548;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1b365f;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        #searchInput {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #searchButton {
+            background-color: #1b365f;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background-color: #bd8548;
+        }
+    </style>
+    <script>
+        function searchTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) { // Start from 1 to skip the header row
+                td = tr[i].getElementsByTagName("td")[0]; // Search in the first column (Company names)
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>GSE Stock Companies</h1>
+    <input type="text" id="searchInput" placeholder="Search for companies...">
+    <button id="searchButton" onclick="searchTable()">Search</button>
+    <table id="myTable">
+        <tr>
+            <th>Company</th>
+            <th>Symbol</th>
+        </tr>
+        <tr><td>Access Bank Ghana Plc</td><td>ACCESS</td></tr>
+        <tr><td>Agricultural Development Bank</td><td>ADB</td></tr>
+        <tr><td>AngloGold Ashanti Plc</td><td>AGA</td></tr>
+        <tr><td>Aluworks LTD</td><td>ALW</td></tr>
+        <tr><td>Asante Gold Corporation</td><td>ASG</td></tr>
+        <tr><td>Benso Oil Palm Plantation Ltd</td><td>BOPP</td></tr>
+        <tr><td>CalBank PLC</td><td>CAL</td></tr>
+        <tr><td>Clydestone (Ghana) Limited</td><td>CLYD</td></tr>
+        <tr><td>Camelot Ghana Ltd</td><td>CMLT</td></tr>
+        <tr><td>Cocoa Processing Company</td><td>CPC</td></tr>
+        <tr><td>Dannex Ayrton Starwin Plc.</td><td>DASPHARMA</td></tr>
+        <tr><td>Ecobank Ghana PLC</td><td>EGH</td></tr>
+        <tr><td>Enterprise Group PLC</td><td>EGL</td></tr>
+        <tr><td>Ecobank Transnational Incorporation</td><td>ETI</td></tr>
+        <tr><td>Fan Milk Limited</td><td>FML</td></tr>
+        <tr><td>Ghana Commercial Bank Limited</td><td>GCB</td></tr>
+        <tr><td>Guinness Ghana Breweries Plc</td><td>GGBL</td></tr>
+        <tr><td>GOIL PLC</td><td>GOIL</td></tr>
+        <tr><td>Mega African Capital Limited</td><td>MAC</td></tr>
+        <tr><td>MTN Ghana</td><td>MTNGH</td></tr>
+        <tr><td>Produce Buying Company Ltd.</td><td>PBC</td></tr>
+        <tr><td>Republic Bank (Ghana) PLC.</td><td>RBGH</td></tr>
+        <tr><td>Standard Chartered Bank Ghana Ltd.</td><td>SCB</td></tr>
+        <tr><td>Standard Chartered Bank Ghana PLC</td><td>SCB PREF</td></tr>
+        <tr><td>SIC Insurance Company Limited</td><td>SIC</td></tr>
+        <tr><td>Societe Generale Ghana Limited</td><td>SOGEGH</td></tr>
+        <tr><td>Sam Wood Ltd.</td><td>SWL</td></tr>
+        <tr><td>Trust Bank Limited (THE GAMBIA)</td><td>TBL</td></tr>
+        <tr><td>Tullow Oil Plc</td><td>TLW</td></tr>
+        <tr><td>TotalEnergies Ghana PLC</td><td>TOTAL</td></tr>
+        <tr><td>Unilever Ghana PLC</td><td>UNIL</td></tr>
+    </table>
+</body>
+</html>
