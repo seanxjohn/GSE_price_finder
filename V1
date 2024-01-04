@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSE Stock Data Viewer</title>
+    <script>
+        // Function to fetch stock data
+        function fetchStockData() {
+            var ticker = document.getElementById("tickerInput").value;
+            var apiUrl = "https://dev.kwayisi.org/apis/gse/equities/" + ticker;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("stockName").innerText = "Name: " + data.name;
+                    document.getElementById("stockPrice").innerText = "Price: GHS " + data.price.toFixed(2);
+                    document.getElementById("marketCapitalization").innerText = "Market Capitalization: " + data.capital.toLocaleString();
+                    document.getElementById("outstandingShares").innerText = "Number of Outstanding Shares: " + data.shares.toLocaleString();
+                    document.getElementById("companyName").innerText = "Company Name: " + data.company.name;
+                    document.getElementById("companyIndustry").innerText = "Industry: " + data.company.industry;
+                    document.getElementById("companySector").innerText = "Sector: " + data.company.sector;
+                    document.getElementById("companyEmail").innerText = "Email: " + data.company.email;
+                    document.getElementById("companyWebsite").innerText = "Website: " + data.company.website;
+                    // Add more fields here as needed based on the API response
+                })
+                .catch(error => {
+                    console.error('Error fetching data: ', error);
+                    document.getElementById("stockData").innerText = "Error fetching data";
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>GSE Stock Data Viewer</h1>
+    <input type="text" id="tickerInput" placeholder="Enter Ticker (e.g., FML)">
+    <button onclick="fetchStockData()">Get Stock Data</button>
+
+    <div id="stockData">
+        <p id="stockName"></p>
+        <p id="stockPrice"></p>
+        <p id="marketCapitalization"></p>
+        <p id="outstandingShares"></p>
+        <p id="companyName"></p>
+        <p id="companyIndustry"></p>
+        <p id="companySector"></p>
+        <p id="companyEmail"></p>
+        <p id="companyWebsite"></p>
+        <!-- Add more paragraphs here as needed for additional data fields -->
+    </div>
+</body>
+</html>
